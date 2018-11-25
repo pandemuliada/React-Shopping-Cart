@@ -58,7 +58,7 @@ class ProductDetail extends Component {
                         delectus magni suscipit mollitia.
                       </p>
                       <br />
-                      <a href="#!" className="button is-primary">
+                      <a href="#!" className="button is-primary" onClick="alert('Helo')">
                       {trans[context.state.language]['Add to Cart']}
                       </a>
                     </div>

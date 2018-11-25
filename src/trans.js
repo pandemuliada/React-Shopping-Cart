@@ -9,7 +9,10 @@ export default {
     'Product Detail': 'Product Detail',
     'Add to Cart': 'Add to Cart',
     'English': 'English',
-    'Indonesian': 'Indonesian'
+    'Indonesian': 'Indonesian',
+    'Shoes': 'Shoes',
+    'Pants': 'Pants',
+    'Accessories': 'Accessories',
   },
   in : {
     'Home': "Beranda",
@@ -21,6 +24,9 @@ export default {
     'Product Detail': 'Detail Produk',
     'Add to Cart': 'Tambah ke Keranjang',
     'English': 'English',
-    'Indonesian': 'Indonesian'
+    'Indonesian': 'Indonesian',
+    'Shoes': 'Sepatu',
+    'Pants': 'Celana',
+    'Accessories': 'Aksesoris',
   }
 };

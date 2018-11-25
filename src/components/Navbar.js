@@ -47,9 +47,9 @@ class Navbar extends Component {
               <a className="navbar-link">{trans[context.state.language]['Product']}</a>
               <div className="navbar-dropdown">
                 <a className="navbar-item">T-Shirt</a>
-                <a className="navbar-item">Pants</a>
-                <a className="navbar-item">Shoes</a>
-                <a className="navbar-item">Accecories</a>
+                <a className="navbar-item">{trans[context.state.language]['Shoes']}</a>
+                <a className="navbar-item">{trans[context.state.language]['Pants']}</a>
+                <a className="navbar-item">{trans[context.state.language]['Accessories']}</a>
               </div>
             </div>
             <div className="navbar-item navbar-start">
