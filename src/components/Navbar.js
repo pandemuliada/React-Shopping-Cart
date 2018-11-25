@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import Context from '../context';
+import trans from '../trans';
+
 
 class Navbar extends Component {
+  state = {
+    isToggled: false
+  }
+
+  handleToggle = () => {
+    this.setState({ isToggled : !this.state.isToggled })
+  }
+  
   render() {
+
     return (
-      <div className="nav-container">
+      <Context.Consumer>
+        {context => {
+          return(
+            <div className="nav-container">
         <nav
         className="navbar is-light"
         role="navigation"
@@ -12,7 +27,7 @@ class Navbar extends Component {
         <div className="container">
           <div className="navbar-brand">
             <a className="navbar-item" href="/">
-              <img src="./favicon.ico" width={28} height={28} />
+              <img src={this.props.icon} width={28} height={28} />
               &nbsp; React Shop
             </a>
             <a
@@ -28,8 +43,8 @@ class Navbar extends Component {
             </a>
           </div>
           <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-item has-dropdown is-hoverable ">
-              <a className="navbar-link">Product</a>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">{trans[context.state.language]['Product']}</a>
               <div className="navbar-dropdown">
                 <a className="navbar-item">T-Shirt</a>
                 <a className="navbar-item">Pants</a>
@@ -41,7 +56,7 @@ class Navbar extends Component {
               <input
                 className="input is-rounded is-normal is-primary"
                 type="text"
-                placeholder="Search Product"
+                placeholder={trans[context.state.language]['Search Product']}
               />
             </div>
           </div>
@@ -49,22 +64,40 @@ class Navbar extends Component {
             <div className="navbar-item">
               <div className="buttons">
                 <a className="button is-primary">
-                  <strong>Sign up</strong>
+                  <strong>{trans[context.state.language]['Signup']}</strong>
                 </a>
-                <a className="button is-light">Log in</a>
+                <a className="button is-light">{trans[context.state.language]['Login']}</a>
               </div>
             </div>
-            <div className="navbar-item has-dropdown">
-              <a className="navbar-link">Language</a>
+            <div className={`navbar-item has-dropdown ${this.state.isToggled == true ? 'is-active' : ''}`}>
+              <a className="navbar-link" onClick={this.handleToggle}>{trans[context.state.language]['Language']}</a>
               <div className="navbar-dropdown">
-                <a className="navbar-item">English</a>
-                <a className="navbar-item">Indonesia</a>
+                <a className="navbar-item"
+                  onClick={() => {
+                    this.handleToggle();
+                    context.changeLanguage('en');
+                  }}
+                >English
+                </a>
+                <a className="navbar-item"
+                  onClick={() => {
+                    this.handleToggle();
+                    context.changeLanguage('in');
+                  }}
+                >Indonesia
+                </a>
               </div>
             </div>
           </div>
         </div>
       </nav>
       </div>
+            
+          )
+        }}
+      
+      </Context.Consumer>
+
     );
   }
 }
